@@ -30,6 +30,12 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+
+  final Post post = Post(
+      body: 'Testing body body body',
+      title: 'Flutter jam6'
+    );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
