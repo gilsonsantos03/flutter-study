@@ -31,10 +31,20 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatelessWidget {
 
-  final Post post = Post(
+   callAPI(){
+    Post post = Post(
       body: 'Testing body body body',
       title: 'Flutter jam6'
     );
+    createPost(post).then((response){
+        if(response.statusCode > 200)
+        print(response.body);
+        else
+          print(response.statusCode);
+    }).catchError((error){
+      print('error : $error');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +56,7 @@ class Home extends StatelessWidget {
       body: FutureBuilder<Post>(
         future: getPost(),
         builder: (context, snapshot) {
+          callAPI();
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {
               return Text("Error");
