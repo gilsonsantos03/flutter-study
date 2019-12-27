@@ -39,8 +39,14 @@ class Home extends StatelessWidget {
       ),
       body: FutureBuilder<Post>(
         future: getPost(),
-        builder: (context, snapshot){
-          return Text('${snapshot.data.title}');
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return Text("Error");
+            }
+            return Text('Title from Post JSON : ${snapshot.data.title}');
+          } else
+            return CircularProgressIndicator();
         },
       ),
     );
