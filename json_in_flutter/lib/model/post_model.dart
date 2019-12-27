@@ -27,3 +27,8 @@ class Post {
     "body": body,
   };
 }
+
+Post postFromJson(String str) {    
+   final jsonData = json.decode(str);    
+   return Post.fromJson(jsonData);
+}
