@@ -32,3 +32,8 @@ Post postFromJson(String str) {
    final jsonData = json.decode(str);    
    return Post.fromJson(jsonData);
 }
+
+String postToJson(Post data) {
+  final dyn = data.toJson();
+  return json.encode(dyn);
+}
